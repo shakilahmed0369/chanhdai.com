@@ -16,7 +16,7 @@ import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
 import { Sponsors } from "@/features/portfolio/components/sponsors"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
-import { Testimonials } from "@/features/portfolio/components/testimonials"
+// import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
 import { cn } from "@/lib/utils"
 
@@ -48,8 +48,10 @@ export default function Page() {
         <About />
         <div className="flex h-2 w-full border-x border-line" />
 
+        {/*
         <Testimonials />
         <div className="flex h-2 w-full border-x border-line" />
+        */}
 
         <GitHubContributions />
         <Separator />
