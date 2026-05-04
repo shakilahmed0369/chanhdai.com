@@ -22,8 +22,10 @@ export function ExperiencePositionItem({
   position: ExperiencePosition
 }) {
   const { start, end } = position.employmentPeriod
-  const isOngoing = !end
-  const duration = formatDuration(start, end)
+  const normalisedEnd =
+    !end || end.toLowerCase() === "current" ? undefined : end
+  const isOngoing = !normalisedEnd
+  const duration = formatDuration(start, normalisedEnd)
 
   return (
     <Collapsible

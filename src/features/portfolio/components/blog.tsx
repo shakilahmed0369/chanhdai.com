@@ -30,7 +30,7 @@ export function Blog() {
             className="screen-line-bottom flex items-center gap-4 px-4 py-3 transition-[background-color] ease-out hover:bg-accent-muted"
           >
             {post.metadata.image && (
-              <div className="relative shrink-0 overflow-hidden rounded-lg select-none [&_img]:size-20 [&_img]:object-cover [&_img]:md:size-28">
+              <div className="relative shrink-0 overflow-hidden rounded-lg select-none [&_img]:h-[70px] [&_img]:w-auto [&_img]:object-cover">
                 <Image
                   src={post.metadata.image}
                   alt={post.metadata.title}
