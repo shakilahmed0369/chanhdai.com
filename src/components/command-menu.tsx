@@ -78,6 +78,12 @@ const MENU_LINKS: CommandLinkItem[] = [
     shortcut: "GB",
   },
   {
+    title: "Projects",
+    href: "/projects",
+    icon: <Box strokeWidth={1.5} />,
+    shortcut: "GP",
+  },
+  {
     title: "Blog",
     href: "/blog",
     icon: <Icons.news />,
@@ -258,7 +264,7 @@ export function CommandMenu({
     [click, setTheme]
   )
 
-  const { componentLinks, blogLinks } = useMemo(
+  const { componentLinks, projectLinks, blogLinks } = useMemo(
     () => ({
       componentLinks: docs
         .filter((doc) => doc.category === "components")
@@ -268,8 +274,13 @@ export function CommandMenu({
           })
         )
         .map(docToCommandLinkItem),
+      projectLinks: docs
+        .filter((doc) => doc.category === "projects")
+        .map(docToCommandLinkItem),
       blogLinks: docs
-        .filter((doc) => doc.category !== "components")
+        .filter(
+          (doc) => doc.category !== "components" && doc.category !== "projects"
+        )
         .map(docToCommandLinkItem),
     }),
     [docs]
@@ -328,6 +339,13 @@ export function CommandMenu({
             heading="Blocks"
             links={blockLinks}
             fallbackIcon={<Icons.gridView />}
+            onLinkSelect={handleOpenLink}
+          />
+
+          <CommandLinkGroup
+            heading="Projects"
+            links={projectLinks}
+            fallbackIcon={<Box strokeWidth={1.5} />}
             onLinkSelect={handleOpenLink}
           />
 
@@ -597,11 +615,16 @@ function CommandMenuFooter() {
 
 function docToCommandLinkItem(doc: DocPreview): CommandLinkItem {
   const isComponent = doc.category === "components"
+  const isProject = doc.category === "projects"
 
   return {
     title: doc.title,
-    href: isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`,
-    keywords: isComponent ? ["component"] : undefined,
+    href: isComponent
+      ? `/components/${doc.slug}`
+      : isProject
+        ? `/projects/${doc.slug}`
+        : `/blog/${doc.slug}`,
+    keywords: isComponent ? ["component"] : isProject ? ["project"] : undefined,
     icon: isComponent ? <ComponentIcon variant={doc.slug} /> : undefined,
   }
 }

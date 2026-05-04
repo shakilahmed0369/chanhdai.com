@@ -42,7 +42,9 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  const allPosts = getAllDocs()
+  const allPosts = getAllDocs().filter(
+    (doc) => doc.metadata.category !== "projects"
+  )
 
   return (
     <div className="min-h-svh">

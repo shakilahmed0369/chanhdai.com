@@ -42,7 +42,9 @@ export const dynamic = "force-static"
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const docs = getAllDocs()
+  const docs = getAllDocs().filter(
+    (doc) => doc.metadata.category !== "projects"
+  )
   return docs.map((doc) => ({ slug: doc.slug }))
 }
 
@@ -52,7 +54,7 @@ export async function generateMetadata({
   const slug = (await params).slug
   const doc = getDocBySlug(slug)
 
-  if (!doc) {
+  if (!doc || doc.metadata.category === "projects") {
     return notFound()
   }
 
@@ -115,7 +117,7 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
   const slug = (await params).slug
   const doc = getDocBySlug(slug)
 
-  if (!doc) {
+  if (!doc || doc.metadata.category === "projects") {
     notFound()
   }
 

@@ -1,14 +1,17 @@
+import { format } from "date-fns"
 import { ArrowRightIcon } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 import { Button } from "@/components/base/ui/button"
-import { PostItem } from "@/features/blog/components/post-item"
 import { getAllDocs } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
 
 export function Blog() {
-  const allPosts = getAllDocs()
+  const allPosts = getAllDocs().filter(
+    (doc) => doc.metadata.category !== "projects"
+  )
 
   return (
     <Panel id="blog">
@@ -19,17 +22,47 @@ export function Blog() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-4">
-        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-line"></div>
-          <div className="border-l border-line"></div>
-        </div>
+      <div className="py-2">
+        {allPosts.slice(0, 6).map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="screen-line-bottom flex items-center gap-4 px-4 py-3 transition-[background-color] ease-out hover:bg-accent-muted"
+          >
+            {post.metadata.image && (
+              <div className="relative shrink-0 overflow-hidden rounded-lg select-none [&_img]:size-20 [&_img]:object-cover [&_img]:md:size-28">
+                <Image
+                  src={post.metadata.image}
+                  alt={post.metadata.title}
+                  width={112}
+                  height={63}
+                  quality={80}
+                  loading="lazy"
+                  unoptimized
+                />
+              </div>
+            )}
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {allPosts.slice(0, 4).map((post) => (
-            <PostItem key={post.slug} post={post} imageLoading="lazy" />
-          ))}
-        </div>
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="line-clamp-2 leading-snug font-medium">
+                {post.metadata.title}
+                {post.metadata.new && (
+                  <span
+                    className="ml-2 inline-block size-2 -translate-y-px rounded-full bg-info"
+                    aria-label="New"
+                  />
+                )}
+              </span>
+
+              <time
+                dateTime={new Date(post.metadata.createdAt).toISOString()}
+                className="text-sm text-muted-foreground"
+              >
+                {format(new Date(post.metadata.createdAt), "dd.MM.yyyy")}
+              </time>
+            </div>
+          </Link>
+        ))}
       </div>
 
       <div className="screen-line-top flex justify-center py-2">
