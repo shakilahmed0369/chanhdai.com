@@ -71,10 +71,10 @@ export default function Page() {
         <Separator />
         */}
 
-        <Education />
+        <Experiences />
         <Separator />
 
-        <Experiences />
+        <Education />
         <Separator />
 
         {/*
