@@ -22,10 +22,7 @@ export function ProfileCover() {
         )}
       >
         <Magnet containerRef={containerRef} magnetStrength={6}>
-          <ChanhDaiMark
-            id="js-cover-mark"
-            className="h-14 w-28 sm:h-16 sm:w-32"
-          />
+          <ChanhDaiMark id="js-cover-mark" className="h-14 w-auto sm:h-16" />
         </Magnet>
       </div>
     </BrandContextMenu>
