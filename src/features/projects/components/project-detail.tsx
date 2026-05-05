@@ -1,5 +1,4 @@
 import { InfinityIcon, LinkIcon } from "lucide-react"
-import Image from "next/image"
 
 import { MDX } from "@/components/mdx"
 import { Button } from "@/components/ui/button"
@@ -17,18 +16,6 @@ export function ProjectDetail({ project }: { project: ProjectDoc }) {
   return (
     <div className="border-x border-line">
       <div className="screen-line-bottom flex items-center gap-3 p-4">
-        {project.metadata.image && (
-          <Image
-            src={project.metadata.image}
-            alt={project.metadata.title}
-            width={48}
-            height={48}
-            quality={100}
-            className="size-12 shrink-0 rounded-xl select-none"
-            unoptimized
-          />
-        )}
-
         <div className="min-w-0 flex-1">
           <h1 className="text-2xl font-semibold tracking-tight">
             {project.metadata.title}
