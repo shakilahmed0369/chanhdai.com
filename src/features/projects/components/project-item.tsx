@@ -23,13 +23,12 @@ export function ProjectItem({
       )}
     >
       {project.metadata.image && (
-        <div className="relative rounded-xl bg-muted select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl [&_img]:object-contain">
+        <div className="relative h-[244px] rounded-xl bg-muted select-none [&_img]:rounded-xl [&_img]:object-contain">
           <Image
             src={project.metadata.image}
             alt={project.metadata.title}
-            width={1200}
-            height={630}
-            quality={100}
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
             loading={imageLoading}
             unoptimized
           />
