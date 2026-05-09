@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { InfinityIcon } from "lucide-react"
 import type { ImageProps } from "next/image"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,6 +13,10 @@ export function ProjectItem({
   project: ProjectDoc
   imageLoading?: ImageProps["loading"]
 }) {
+  const { periodStart, periodEnd } = project.metadata
+  const isOngoing = !periodEnd
+  const isSinglePeriod = periodEnd === periodStart
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -49,11 +53,22 @@ export function ProjectItem({
         </h3>
 
         <dl>
-          <dt className="sr-only">Created on</dt>
-          <dd className="text-sm text-muted-foreground">
-            <time dateTime={new Date(project.metadata.createdAt).toISOString()}>
-              {format(new Date(project.metadata.createdAt), "dd.MM.yyyy")}
-            </time>
+          <dt className="sr-only">Period</dt>
+          <dd className="flex items-center gap-0.5 text-sm text-muted-foreground">
+            <span>{periodStart}</span>
+            {!isSinglePeriod && (
+              <>
+                <span className="font-mono">&mdash;</span>
+                {isOngoing ? (
+                  <InfinityIcon
+                    className="size-4.5 translate-y-[0.5px]"
+                    aria-label="Present"
+                  />
+                ) : (
+                  <span>{periodEnd}</span>
+                )}
+              </>
+            )}
           </dd>
         </dl>
       </div>
