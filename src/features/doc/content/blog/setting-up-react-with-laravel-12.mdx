@@ -1,0 +1,278 @@
+---
+title: Setting up React with Laravel 12
+description: A comprehensive guide to setting up React with Laravel 12 from scratch, giving you complete control over your application architecture.
+image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop
+createdAt: 2025-09-10
+updatedAt: 2025-11-08
+---
+
+Building modern web applications often requires combining a powerful backend framework with a dynamic frontend library. Laravel 12 and React make an excellent pair, offering robust server-side capabilities alongside reactive user interfaces. While Laravel provides starter kits like Breeze and Jetstream, sometimes you need more control over your setup.
+
+In this comprehensive guide, I'll walk you through setting up React with Laravel 12 from scratch, giving you complete control over your application architecture.
+
+## Why Choose React with Laravel 12?
+
+Before diving into the setup, let's understand why this combination works so well:
+
+- Laravel 12 provides a robust API backend with excellent developer experience
+- React offers component-based UI development with excellent performance
+- Vite (Laravel's default build tool) provides fast hot module replacement
+- Complete separation of frontend and backend concerns
+- Flexibility to customize your stack exactly as needed
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- PHP 8.2 or higher
+- Composer
+- Node.js 18 or higher
+- npm or yarn
+
+## Step-by-Step Setup
+
+### Step 1: Create a Fresh Laravel 12 Project
+
+Start by creating a new Laravel project:
+
+```bash
+composer create-project laravel/laravel your-app-name
+cd your-app-name
+```
+
+This gives us a clean Laravel installation without any frontend scaffolding.
+
+### Step 2: Install Node.js Dependencies
+
+Install the necessary packages for React and build tools:
+
+```bash
+npm install react react-dom @vitejs/plugin-react
+npm install -D @types/react @types/react-dom
+```
+
+These packages provide:
+
+- `react` and `react-dom`: Core React libraries
+- `@vitejs/plugin-react`: Vite plugin for React support
+- `@types/*`: TypeScript definitions for better IDE support
+
+### Step 3: Configure Vite for React
+
+Update your `vite.config.js` file to support React:
+
+```js
+import { defineConfig } from "vite"
+import laravel from "laravel-vite-plugin"
+import react from "@vitejs/plugin-react-swc"
+import tailwindcss from "@tailwindcss/vite"
+
+export default defineConfig({
+  plugins: [
+    react(),
+    laravel({
+      input: ["resources/css/app.css", "resources/js/app.jsx"],
+      refresh: true,
+    }),
+    tailwindcss(),
+  ],
+})
+```
+
+Key changes:
+
+- Added React plugin
+- Changed entry point from `app.js` to `app.jsx`
+- Enabled hot module replacement with `refresh: true`
+
+### Step 4: Set Up React Entry Point
+
+Rename `resources/js/app.js` to `resources/js/app.jsx` and replace its contents:
+
+```jsx
+import React from "react"
+import { createRoot } from "react-dom/client"
+import App from "./components/App"
+import "../css/app.css"
+
+const container = document.getElementById("app")
+const root = createRoot(container)
+root.render(<App />)
+```
+
+This file:
+
+- Imports React and the new `createRoot` API
+- Imports our main `App` component
+- Renders the React app into the DOM element with id `app`
+
+### Step 5: Create Your First React Component
+
+Create a directory `resources/js/components/` and add `App.jsx`:
+
+```jsx
+import React, { useState } from "react"
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="rounded-lg bg-white p-8 shadow-md">
+        <h1 className="mb-4 text-3xl font-bold text-gray-800">
+          React + Laravel 12
+        </h1>
+        <div className="space-y-4">
+          <p className="text-gray-600">Count: {count}</p>
+          <div className="space-x-2">
+            <button
+              onClick={() => setCount(count + 1)}
+              className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+            >
+              Increment
+            </button>
+            <button
+              onClick={() => setCount(count - 1)}
+              className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+            >
+              Decrement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default App
+```
+
+This creates a simple counter component to verify everything works correctly.
+
+### Step 6: Update Your Blade Template
+
+Create or update `resources/views/app.blade.php`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React + Laravel</title>
+    @viteReactRefresh @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+```
+
+Important points:
+
+- The `@vite` directive loads our compiled assets
+- The `div` with id `app` is where React will mount
+- We're loading both CSS and JSX files
+
+### Step 7: Set Up Routes
+
+Update `routes/web.php` to handle client-side routing:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');
+```
+
+This catch-all route ensures that all requests serve your React application, enabling client-side routing.
+
+### Step 8: Build and Run
+
+Start both development servers:
+
+```bash
+# Terminal 1: Laravel development server
+php artisan serve
+
+# Terminal 2: Vite development server
+npm run dev
+```
+
+Visit http://localhost:8000 to see your React + Laravel application in action!
+
+## Setting Up API Integration
+
+To connect your React frontend with Laravel's API, first create API routes in `routes/api.php`:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/test', function () {
+    return response()->json(['message' => 'Hello from Laravel API!']);
+});
+```
+
+Then in your React components, you can fetch data:
+
+```jsx
+useEffect(() => {
+  fetch("/api/test")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+}, [])
+```
+
+## Final Project Structure
+
+Your project should now look like this:
+
+```text
+your-app-name/
+├── resources/
+│   ├── js/
+│   │   ├── components/
+│   │   │   └── App.jsx
+│   │   └── app.jsx
+│   ├── css/
+│   │   └── app.css
+│   └── views/
+│       └── app.blade.php
+├── routes/
+│   ├── web.php
+│   └── api.php
+├── vite.config.js
+└── package.json
+```
+
+## Next Steps
+
+Now that you have a solid foundation, you can:
+
+- Add React Router for client-side navigation
+- Set up state management with Redux or Zustand
+- Create API endpoints in Laravel for your React components
+- Add authentication using Laravel Sanctum
+- Implement real-time features with Laravel Broadcasting
+
+## Conclusion
+
+Setting up React with Laravel 12 manually gives you complete control over your application architecture. This approach is perfect when you need:
+
+- Custom build configurations
+- Specific package versions
+- Complete separation of concerns
+- Full understanding of your stack
+
+While starter kits are convenient, this manual setup ensures you understand every piece of your application and can customize it exactly to your needs.
+
+The combination of Laravel's robust backend capabilities with React's dynamic frontend creates a powerful foundation for modern web applications. With hot module replacement from Vite, you'll have an excellent developer experience that scales with your project's complexity.
+
+Happy coding!
+
+Have questions about this setup? Feel free to reach out or check the Laravel and React documentation for more advanced configurations.
