@@ -10,24 +10,22 @@ export function SiteFooter() {
     <footer className="max-w-screen overflow-x-hidden px-2">
       <div className="screen-line-top mx-auto border-x border-line pt-4 group-has-data-[slot=layout-wide]/layout:container md:max-w-3xl">
         <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground [&_span]:mx-0.5 [&_span]:inline-block">
-          Inspired by tailwindcss.com<span>/</span>ui.shadcn.com<span>/</span>
-          vercel.com<span>/</span>evilcharts.com
+          Built with Next.js, Tailwind CSS, shadcn/ui
         </p>
 
         <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
           Built with care by{" "}
           <a
             className="font-medium text-foreground link-underline"
-            href="https://x.com/iamncdai"
+            href="https://x.com/dev_shakil01"
             target="_blank"
             rel="noopener"
           >
-            ncdai
+            shakilahmed
           </a>
-          . The source code is available on{" "}
           <a
             className="font-medium text-foreground link-underline"
-            href={SOURCE_CODE_GITHUB_URL}
+            href="https://github.com/shakilahmed0369"
             target="_blank"
             rel="noopener"
           >
@@ -51,7 +49,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://x.com/iamncdai?utm_source=chanhdai.com"
+              href="https://x.com/dev_shakil01"
               target="_blank"
               rel="noopener"
               aria-label="X"
@@ -63,7 +61,7 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://github.com/ncdai?utm_source=chanhdai.com"
+              href="https://github.com/shakilahmed0369"
               target="_blank"
               rel="noopener"
               aria-label="GitHub"
@@ -75,24 +73,12 @@ export function SiteFooter() {
 
             <a
               className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href="https://www.linkedin.com/in/ncdai?utm_source=chanhdai.com"
+              href="https://www.linkedin.com/in/shakilahmeed"
               target="_blank"
               rel="noopener"
               aria-label="LinkedIn"
             >
               <Icons.linkedin className="size-4" />
-            </a>
-
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-[color] hover:text-foreground"
-              href={`${SITE_INFO.url}/rss`}
-              target="_blank"
-              rel="noopener"
-              aria-label="RSS"
-            >
-              <RssIcon className="size-4" />
             </a>
 
             <Separator />
