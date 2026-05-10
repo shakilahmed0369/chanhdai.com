@@ -28,7 +28,7 @@ export function CourseItem({
       )}
     >
       {course.image && (
-        <div className="relative h-[244px] rounded-xl bg-muted select-none [&_img]:rounded-xl [&_img]:object-contain">
+        <div className="relative h-[244px] rounded-xl bg-muted select-none [&_img]:rounded-xl [&_img]:object-cover">
           <Image
             src={course.image}
             alt={course.title}
