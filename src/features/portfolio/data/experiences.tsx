@@ -8,10 +8,10 @@ export const EXPERIENCES: Experience[] = [
     companyName: "WebSolutionUS",
     positions: [
       {
-        id: "1",
+        id: "2",
         title: "Senior Software Engineer (Remote)",
         employmentPeriod: {
-          start: "2022",
+          start: "2023",
           end: "current",
         },
         employmentType: "Full-time",
@@ -35,6 +35,30 @@ export const EXPERIENCES: Experience[] = [
           "CI/CD",
         ],
       },
+      {
+        id: "1",
+        title: "Software Engineer (Remote)",
+        employmentPeriod: {
+          start: "2022",
+          end: "2023",
+        },
+        employmentType: "Full-time",
+        icon: <CodeXmlIcon />,
+        isExpanded: true,
+        description: `- Built and maintained backend features using Laravel and PHP.
+- Created RESTful APIs for internal and external client integrations.
+- Wrote clean, maintainable code and participated in peer code reviews.
+- Assisted in debugging and resolving production issues.
+- Worked closely with senior developers to implement new features.`,
+        skills: [
+          "Laravel",
+          "PHP",
+          "RESTful APIs",
+          "JavaScript",
+          "MySQL",
+          "Git",
+        ],
+      },
     ],
     isCurrentEmployer: true,
   },
@@ -44,7 +68,7 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         id: "1",
-        title: "Senior Software Engineer",
+        title: "Full Stack Developer",
         employmentPeriod: {
           start: "2021",
           end: "2022",
@@ -76,14 +100,26 @@ export const EXPERIENCES: Experience[] = [
         id: "2",
         title: "Full-stack Developer",
         employmentPeriod: {
-          start: "2020",
-          end: "2021",
+          start: "2019",
+          end: "2022",
         },
-        employmentType: "Full-time",
-        description: `- Responsible for developing backend features and supporting client projects
-        by translating business needs into functional solutions.`,
+        employmentType: "Freelance",
+        description: `- Delivered custom web solutions for clients across Fiverr, Upwork, and direct local clients.
+- Built diverse projects including e-commerce platforms, business websites, CMS systems, and RESTful API services.
+- Gained hands-on experience with various technologies by adapting to different project requirements.
+- Managed client communication, understood requirements, and delivered projects on time.
+- Developed strong problem-solving skills by handling end-to-end development independently.`,
         icon: <CodeXmlIcon />,
-        skills: ["PHP", "Laravel", "Bootstrap", "JavaScript"],
+        skills: [
+          "PHP",
+          "Laravel",
+          "WordPress",
+          "Bootstrap",
+          "JavaScript",
+          "MySQL",
+          "HTML",
+          "CSS",
+        ],
       },
       {
         id: "1",
@@ -93,7 +129,11 @@ export const EXPERIENCES: Experience[] = [
           end: "2019",
         },
         employmentType: "Part-time",
-        description: "Designed logos, posters, ads, and UI.",
+        description: `- Created logos, posters, banners, and social media advertisements for local businesses and individuals.
+- Designed user interfaces for web pages and mobile apps.
+- Worked with clients to understand their brand identity and translate it into visual designs.
+- Used design tools to produce high-quality print and digital assets.
+- Gained foundational knowledge of UI/UX principles and responsive design.`,
         icon: <DraftingCompassIcon />,
         skills: [
           "HTML",
