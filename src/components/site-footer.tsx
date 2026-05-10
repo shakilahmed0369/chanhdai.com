@@ -23,14 +23,6 @@ export function SiteFooter() {
           >
             shakilahmed
           </a>
-          <a
-            className="font-medium text-foreground link-underline"
-            href="https://github.com/shakilahmed0369"
-            target="_blank"
-            rel="noopener"
-          >
-            GitHub
-          </a>
           .
         </p>
 
