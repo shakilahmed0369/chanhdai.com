@@ -9,15 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.metadata.updatedAt).toISOString(),
   }))
 
-  const components = getDocsByCategory("components").map((post) => ({
-    url: `${SITE_INFO.url}/components/${post.slug}`,
-    lastModified: new Date(post.metadata.updatedAt).toISOString(),
-  }))
-
-  const routes = ["", "/blog", "/components"].map((route) => ({
+  const routes = ["", "/blog"].map((route) => ({
     url: `${SITE_INFO.url}${route}`,
     lastModified: new Date().toISOString(),
   }))
 
-  return [...routes, ...posts, ...components]
+  return [...routes, ...posts]
 }

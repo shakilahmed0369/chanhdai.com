@@ -31,17 +31,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:section(blog|components)/writing-effect-inspired-by-apple",
+        source: "/:section(blog)/writing-effect-inspired-by-apple",
         destination: "/:section/apple-hello-effect",
         permanent: true,
       },
       {
-        source: "/:section(blog|components)/work-experience",
+        source: "/:section(blog)/work-experience",
         destination: "/:section/work-experience-component",
         permanent: true,
       },
       {
-        source: "/:section(blog|components)/theme-switcher-component",
+        source: "/:section(blog)/theme-switcher-component",
         destination: "/:section/theme-switcher",
         permanent: true,
       },
@@ -55,11 +55,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/:section(blog|components)/:slug.mdx",
+        source: "/:section(blog)/:slug.mdx",
         destination: "/doc.mdx/:slug",
       },
       {
-        source: "/:section(blog|components)/:slug",
+        source: "/:section(blog)/:slug",
         destination: "/doc.mdx/:slug",
         has: [
           {
@@ -72,10 +72,6 @@ const nextConfig: NextConfig = {
       {
         source: "/rss",
         destination: "/blog/rss",
-      },
-      {
-        source: "/registry/rss",
-        destination: "/components/rss",
       },
     ]
   },

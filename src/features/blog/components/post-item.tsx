@@ -23,18 +23,18 @@ export function PostItem({
       )}
     >
       {post.metadata.image && (
-        <div className="relative select-none [&_img]:aspect-1200/630 [&_img]:rounded-xl">
+        <div className="relative h-[70px] w-[124px] shrink-0 overflow-hidden rounded-lg bg-muted select-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover">
           <Image
             src={post.metadata.image}
             alt={post.metadata.title}
-            width={1200}
-            height={630}
+            width={124}
+            height={70}
             quality={100}
             loading={imageLoading}
             unoptimized
           />
 
-          <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-black/10 ring-inset dark:ring-white/10" />
         </div>
       )}
 
