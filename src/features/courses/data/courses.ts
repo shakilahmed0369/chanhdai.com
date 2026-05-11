@@ -13,6 +13,7 @@ export const COURSES: Course[] = [
     description:
       "Develop a Robust Multi-Vendor E-commerce Website Using Laravel 10, with Comprehensive Step-by-step Instructions.",
     image: "/courses/01K2WDH0VWGN41P5DCW1EQ1BF8.png",
+    students: "8,200",
   },
   {
     id: "laravel-digital-marketplace",
@@ -26,6 +27,7 @@ export const COURSES: Course[] = [
     description:
       "Develop a Robust Multi-Vendor Digital Marketplace Platform Using Laravel From Setup to Deployment Step-by-step.",
     image: "/courses/01K2WD89NTKYJ3CE2T9MZFFXA5.png",
+    students: "4,100",
   },
   {
     id: "laravel-lms",
@@ -45,6 +47,7 @@ export const COURSES: Course[] = [
     description:
       "Step-by-Step Laravel 11 Mastery — Build a Complete LMS from Scratch and Unlock Professional Development Skills!",
     image: "/courses/01K2WDBT6T2RSNYX69ZRYV0NF1.png",
+    students: "3,800",
   },
   {
     id: "laravel-basics-to-advance",
@@ -58,6 +61,7 @@ export const COURSES: Course[] = [
     description:
       "Learn Laravel 11 Step-by-Step and Build Professional Projects with Confidence — From the Ground Up.",
     image: "/courses/01K2WDNHP59VXHS4WHT52XKNHG.png",
+    students: "9,500",
   },
   {
     id: "laravel-job-portal",
@@ -71,6 +75,7 @@ export const COURSES: Course[] = [
     description:
       "Develop a Robust Job Portal Website Using Laravel 10, with Comprehensive Step-by-step Instructions.",
     image: "/courses/01K2WDERYVD524V9JFJQF0W8H8.png",
+    students: "5,300",
   },
   {
     id: "laravel-restaurant-food",
@@ -90,6 +95,7 @@ export const COURSES: Course[] = [
     description:
       "Building a Robust Restaurant and Food Ordering Platform Using Laravel 10, with Comprehensive Step-by-step Instructions.",
     image: "/courses/01K2WDTZK0RVFNNN0CSFSKTA6Y.png",
+    students: "4,700",
   },
   {
     id: "laravel-realtime-messaging",
@@ -103,6 +109,7 @@ export const COURSES: Course[] = [
     description:
       "Unlock the Potential of Laravel 10 & Pusher — Create an Interactive Realtime Messaging Platform with Expert Guidance.",
     image: "/courses/01K2WE11CGYSV1WBM00RZ7YCKP.png",
+    students: "2,900",
   },
   {
     id: "laravel-directory-listing",
@@ -116,5 +123,6 @@ export const COURSES: Course[] = [
     description:
       "Building an Advanced Directory Listing Website Using Laravel 10, with Comprehensive Step-by-step Instructions.",
     image: "/courses/01K2WE3H55K6SV0QVSYD8AM9C7.png",
+    students: "2,100",
   },
 ]

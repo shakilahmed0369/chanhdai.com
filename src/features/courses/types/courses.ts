@@ -11,6 +11,8 @@ export type Course = {
   }
   /** Public URL to the course. */
   link: string
+  /** Student count (e.g. "12,345" or "40,000+"). */
+  students?: string
   /** Tags/technologies covered in the course. */
   skills: string[]
   /** Optional course thumbnail image URL. */

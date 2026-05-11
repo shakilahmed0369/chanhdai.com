@@ -1,4 +1,3 @@
-import { InfinityIcon } from "lucide-react"
 import type { ImageProps } from "next/image"
 import Image from "next/image"
 
@@ -12,10 +11,6 @@ export function CourseItem({
   course: Course
   imageLoading?: ImageProps["loading"]
 }) {
-  const { start, end } = course.period
-  const isOngoing = !end
-  const isSinglePeriod = end === start
-
   return (
     <a
       href={course.link}
@@ -46,25 +41,11 @@ export function CourseItem({
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">{course.platform}</p>
 
-          <dl>
-            <dt className="sr-only">Period</dt>
-            <dd className="flex items-center gap-0.5 text-sm text-muted-foreground">
-              <span>{start}</span>
-              {!isSinglePeriod && (
-                <>
-                  <span className="font-mono">&mdash;</span>
-                  {isOngoing ? (
-                    <InfinityIcon
-                      className="size-4.5 translate-y-[0.5px]"
-                      aria-label="Present"
-                    />
-                  ) : (
-                    <span>{end}</span>
-                  )}
-                </>
-              )}
-            </dd>
-          </dl>
+          {course.students && (
+            <p className="text-sm text-muted-foreground">
+              {course.students} students
+            </p>
+          )}
         </div>
 
         <h3 className="text-lg leading-snug font-medium text-balance">
