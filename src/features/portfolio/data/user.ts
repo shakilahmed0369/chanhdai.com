@@ -38,8 +38,7 @@ export const USER: User = {
   - Experienced across the full SDLC, working with legacy systems, and delivering reliable, production-ready solutions.
   `,
   avatar: "https://avatars.githubusercontent.com/u/51516043?v=4",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=8",
+  ogImage: "/og-image.png",
   namePronunciationUrl: "",
   timeZone: "Asia/Dhaka",
   keywords: [
