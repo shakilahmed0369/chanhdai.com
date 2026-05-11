@@ -41,6 +41,9 @@ const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${enc
 export const metadata: Metadata = {
   title,
   description,
+  robots: {
+    index: false,
+  },
   alternates: {
     canonical: "/components",
   },

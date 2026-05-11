@@ -66,6 +66,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    robots: {
+      index: false,
+    },
     alternates: {
       canonical: postUrl,
     },
