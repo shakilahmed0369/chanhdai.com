@@ -1,0 +1,24 @@
+# shakilahmed.dev
+
+> Software Engineer portfolio showcasing Laravel expertise, open-source projects, courses, and blog posts on web development and AI.
+
+- [About](https://shakilahmed.dev/): A quick intro to me, my tech stack, and how to connect.
+- [Experience](https://shakilahmed.dev/): Highlights from my career and key roles I've taken on.
+- [Projects](https://shakilahmed.dev/projects): Selected projects that show my skills and creativity.
+- [Courses](https://shakilahmed.dev/courses): Courses and workshops I have taught.
+- [Blog](https://shakilahmed.dev/blog): Thoughts on Laravel, React, AI, and software engineering.
+
+## Projects
+
+- [SkillGro LMS](https://shakilahmed.dev/projects/skillgro): A comprehensive Learning Management System tailored for instructors and educators to create, manage, and sell online courses.
+- [AwtoSMM](https://shakilahmed.dev/projects/smm): AI-powered social media management and marketing SaaS platform that automates content scheduling, audience engagement, and campaign analytics.
+- [Fluid ERD](https://shakilahmed.dev/projects/fluiderd): AI-driven database design and visualization platform that helps developers create, analyze, and manage database schemas with ease.
+- [Sajao Multi Vendor Ecommerce](https://shakilahmed.dev/projects/sajao): A multi-vendor ecommerce platform built with Laravel and React, enabling businesses to create online marketplaces.
+- [SkillGro LMS Flutter App](https://shakilahmed.dev/projects/skillgro-app): Cross-platform mobile learning app built with Flutter that connects students and instructors to SkillGro's online course marketplace.
+
+## Blog
+
+- [Avoid These 5 Laravel Middleware Mistakes for Cleaner, More Secure Code](https://shakilahmed.dev/blog/avoid-these-5-laravel-middleware-mistakes): Uncover five harmful Laravel middleware anti-patterns and learn production-ready fixes to keep your codebase clean, secure, and maintainable in 2025.
+- [Mastering Eloquent in Laravel 12 — 15 Performance Optimization Tricks for Scalable Apps in 2025](https://shakilahmed.dev/blog/mastering-eloquent-in-laravel-12): 15 advanced Laravel 12 Eloquent optimization techniques to slash query times and boost performance for scalable applications.
+- [Setting Up React with Laravel 12 — A Complete Step-by-Step Guide from Scratch for Modern Full-Stack Applications in 2025](https://shakilahmed.dev/blog/setting-up-react-with-laravel-12): A step-by-step guide to manually setting up React with Laravel 12 using Vite, from project creation to API integration.
+- [Retrieval-Augmented Generation (RAG): The Bridge Between AI and Real-Time Knowledge](https://shakilahmed.dev/blog/retrieval-augmented-generation-rag-the-bridge-between-ai-and-real-time-knowledge): A comprehensive guide to Retrieval-Augmented Generation (RAG), how it works, real-world applications, and building a basic RAG pipeline step by step.

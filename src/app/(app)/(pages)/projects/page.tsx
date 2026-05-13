@@ -5,6 +5,7 @@ import {
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
+import { X_HANDLE } from "@/config/site"
 import { ProjectList } from "@/features/projects/components/project-list"
 import { getAllProjects } from "@/features/projects/data/projects"
 
@@ -16,9 +17,6 @@ const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${enc
 export const metadata: Metadata = {
   title,
   description,
-  robots: {
-    index: false,
-  },
   alternates: {
     canonical: "/projects",
   },
@@ -31,6 +29,12 @@ export const metadata: Metadata = {
       height: 630,
       alt: title,
     },
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: X_HANDLE,
+    creator: X_HANDLE,
+    images: [ogImage],
   },
 }
 
