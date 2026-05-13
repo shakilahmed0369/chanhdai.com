@@ -25,12 +25,6 @@ export const USER: User = {
       website: "https://websolutionus.com",
       experienceId: "websolutionus",
     },
-    {
-      title: "Founder",
-      company: "Algovar",
-      website: "https://algovar.com",
-      experienceId: "algovar",
-    },
   ],
   about: `
   - Software Engineer with 5+ years of experience building scalable web applications using Laravel, RESTful APIs, and modern JavaScript frameworks.
