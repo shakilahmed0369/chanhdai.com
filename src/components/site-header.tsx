@@ -1,9 +1,7 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-import blocks from "@/__registry__/__blocks__.json"
 import { NavDesktop } from "@/components/nav-desktop"
-import { NavItemGitHub } from "@/components/nav-item-github"
 import { SiteHeaderMark } from "@/components/site-header-mark"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Separator } from "@/components/ui/separator"
@@ -53,8 +51,7 @@ export function SiteHeader() {
           <NavDesktop items={MAIN_NAV} />
 
           <div className="flex items-center *:first:mr-2 max-sm:*:data-[slot=command-menu-trigger]:hidden">
-            <CommandMenu docs={docPreviews} blocks={blocks} enabledHotkeys />
-            <NavItemGitHub />
+            <CommandMenu docs={docPreviews} enabledHotkeys />
             <Separator
               orientation="vertical"
               className="mx-2 data-vertical:h-4 data-vertical:self-center"
@@ -76,7 +73,7 @@ export function SiteHeader() {
           "*:data-[slot=command-menu-trigger]:min-w-20 *:data-[slot=command-menu-trigger]:gap-2 *:data-[slot=command-menu-trigger]:rounded-none *:data-[slot=command-menu-trigger]:border-none *:data-[slot=command-menu-trigger]:bg-transparent *:data-[slot=command-menu-trigger]:px-0 *:data-[slot=command-menu-trigger]:liquid-glass-border-none *:data-[slot=command-menu-trigger]:hover:bg-transparent *:data-[slot=command-menu-trigger]:active:scale-none"
         )}
       >
-        <CommandMenu docs={docPreviews} blocks={blocks} />
+        <CommandMenu docs={docPreviews} />
         <Separator
           orientation="vertical"
           className="mr-1 ml-2.5 data-vertical:h-6 data-vertical:self-center"

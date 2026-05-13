@@ -3,19 +3,15 @@
 import { useRouter } from "@bprogress/next/app"
 import { useCommandState } from "cmdk"
 import {
-  Bookmark,
+  BookOpen,
   Box,
   BriefcaseBusiness,
-  CircleCheckBig,
   CornerDownLeft,
-  Crown,
   Download,
   FileText,
   Layers,
   MoonStar,
-  Quote,
   RssIcon,
-  SquareDashed,
   SunMedium,
   TextInitial,
   Type,
@@ -42,7 +38,7 @@ import { copyToClipboardWithEvent } from "@/utils/copy"
 
 import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
 import { getWordmarkSVG } from "./chanhdai-wordmark"
-import { ComponentIcon, Icons } from "./icons"
+import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
 import { Separator } from "./ui/separator"
@@ -66,18 +62,6 @@ const MENU_LINKS: CommandLinkItem[] = [
     shortcut: "GH",
   },
   {
-    title: "Components",
-    href: "/components",
-    icon: <Icons.react />,
-    shortcut: "GC",
-  },
-  {
-    title: "Blocks",
-    href: "/blocks",
-    icon: <Icons.gridView />,
-    shortcut: "GB",
-  },
-  {
     title: "Projects",
     href: "/projects",
     icon: <Box strokeWidth={1.5} />,
@@ -90,16 +74,10 @@ const MENU_LINKS: CommandLinkItem[] = [
     shortcut: "GL",
   },
   {
-    title: "Sponsors",
-    href: "/sponsors",
-    icon: <Icons.favourite />,
-    shortcut: "GS",
-  },
-  {
-    title: "Testimonials",
-    href: "/testimonials",
-    icon: <Quote strokeWidth={1.5} />,
-    shortcut: "GT",
+    title: "Courses",
+    href: "/courses",
+    icon: <BookOpen strokeWidth={1.5} />,
+    shortcut: "GU",
   },
 ]
 
@@ -123,21 +101,6 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     title: "Projects",
     href: "/#projects",
     icon: <Box />,
-  },
-  {
-    title: "Awards",
-    href: "/#awards",
-    icon: <Crown />,
-  },
-  {
-    title: "Certifications",
-    href: "/#certs",
-    icon: <CircleCheckBig />,
-  },
-  {
-    title: "Bookmarks",
-    href: "/#bookmarks",
-    icon: <Bookmark />,
   },
   {
     title: "Download vCard",
@@ -168,19 +131,11 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   },
 ]
 
-type BlockItem = {
-  name: string
-  description: string
-  categories: string[]
-}
-
 export function CommandMenu({
   docs,
-  blocks,
   enabledHotkeys = false,
 }: {
   docs: DocPreview[]
-  blocks: BlockItem[]
   enabledHotkeys?: boolean
 }) {
   const router = useRouter()
@@ -264,16 +219,8 @@ export function CommandMenu({
     [click, setTheme]
   )
 
-  const { componentLinks, projectLinks, blogLinks } = useMemo(
+  const { projectLinks, blogLinks } = useMemo(
     () => ({
-      componentLinks: docs
-        .filter((doc) => doc.category === "components")
-        .sort((a, b) =>
-          a.title.localeCompare(b.title, "en", {
-            sensitivity: "base",
-          })
-        )
-        .map(docToCommandLinkItem),
       projectLinks: docs
         .filter((doc) => doc.category === "projects")
         .map(docToCommandLinkItem),
@@ -284,16 +231,6 @@ export function CommandMenu({
         .map(docToCommandLinkItem),
     }),
     [docs]
-  )
-
-  const blockLinks = useMemo(
-    () =>
-      blocks.map((block) => ({
-        title: block.name,
-        href: `/blocks/${block.categories[0]}/${block.name}`,
-        keywords: ["block"],
-      })),
-    [blocks]
   )
 
   return (
@@ -325,20 +262,6 @@ export function CommandMenu({
           <CommandLinkGroup
             heading="Portfolio"
             links={PORTFOLIO_LINKS}
-            onLinkSelect={handleOpenLink}
-          />
-
-          <CommandLinkGroup
-            heading="Components"
-            links={componentLinks}
-            fallbackIcon={<Icons.react />}
-            onLinkSelect={handleOpenLink}
-          />
-
-          <CommandLinkGroup
-            heading="Blocks"
-            links={blockLinks}
-            fallbackIcon={<Icons.gridView />}
             onLinkSelect={handleOpenLink}
           />
 
@@ -385,20 +308,6 @@ export function CommandMenu({
             >
               <Type />
               Copy Logotype as SVG
-            </CommandItem>
-
-            <CommandItem
-              onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
-            >
-              <SquareDashed />
-              Brand Guidelines
-            </CommandItem>
-
-            <CommandItem asChild>
-              <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
-                <Download />
-                Download Brand Assets
-              </a>
             </CommandItem>
           </CommandGroup>
 
@@ -563,9 +472,6 @@ function buildCommandMetaMap() {
   commandMetaMap.set("Copy Logotype as SVG", {
     commandKind: "command",
   })
-  commandMetaMap.set("Download Brand Assets", {
-    commandKind: "command",
-  })
 
   SOCIAL_LINK_ITEMS.forEach((item) => {
     commandMetaMap.set(item.title, {
@@ -614,17 +520,11 @@ function CommandMenuFooter() {
 }
 
 function docToCommandLinkItem(doc: DocPreview): CommandLinkItem {
-  const isComponent = doc.category === "components"
   const isProject = doc.category === "projects"
 
   return {
     title: doc.title,
-    href: isComponent
-      ? `/components/${doc.slug}`
-      : isProject
-        ? `/projects/${doc.slug}`
-        : `/blog/${doc.slug}`,
-    keywords: isComponent ? ["component"] : isProject ? ["project"] : undefined,
-    icon: isComponent ? <ComponentIcon variant={doc.slug} /> : undefined,
+    href: isProject ? `/projects/${doc.slug}` : `/blog/${doc.slug}`,
+    keywords: isProject ? ["project"] : undefined,
   }
 }
