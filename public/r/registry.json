@@ -247,8 +247,8 @@
       "registryDependencies": [
         "collapsible",
         "separator",
-        "https://chanhdai.com/r/chevrons-up-down-icon.json",
-        "https://chanhdai.com/r/typography.json"
+        "https://acme.com/r/chevrons-up-down-icon.json",
+        "https://acme.com/r/typography.json"
       ],
       "files": [
         {
@@ -284,7 +284,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/shimmering-text.json"
+        "https://acme.com/r/shimmering-text.json"
       ],
       "files": [
         {
@@ -302,7 +302,7 @@
       "description": "Scrolling marquee to showcase user testimonials.",
       "registryDependencies": [
         "@kibo-ui/marquee",
-        "https://chanhdai.com/r/testimonial.json"
+        "https://acme.com/r/testimonial.json"
       ],
       "docs": "https://chanhdai.com/components/testimonials-marquee",
       "type": "registry:component",
@@ -482,7 +482,7 @@
         "jotai"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/copy-button.json"
+        "https://acme.com/r/copy-button.json"
       ],
       "files": [
         {
@@ -516,7 +516,7 @@
       "title": "Testimonial Spotlight",
       "description": "Testimonial card with spotlight effect on hover.",
       "registryDependencies": [
-        "https://chanhdai.com/r/testimonial.json"
+        "https://acme.com/r/testimonial.json"
       ],
       "files": [
         {
@@ -595,7 +595,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/use-controllable-state.json"
+        "https://acme.com/r/use-controllable-state.json"
       ],
       "files": [
         {
@@ -633,7 +633,7 @@
       ],
       "registryDependencies": [
         "tooltip",
-        "https://chanhdai.com/r/contribution-graph.json"
+        "https://acme.com/r/contribution-graph.json"
       ],
       "files": [
         {
@@ -686,216 +686,6 @@
       ],
       "docs": "https://chanhdai.com/components/fluid-gradient-text",
       "type": "registry:component",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "login-01",
-      "title": "Login 01",
-      "description": "A simple login form.",
-      "registryDependencies": [
-        "button",
-        "card",
-        "input",
-        "label",
-        "field"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/login-01/page.tsx",
-          "type": "registry:page",
-          "target": "app/login/page.tsx"
-        },
-        {
-          "path": "src/registry/blocks/login-01/components/login-form.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "application",
-        "login"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "hero-01",
-      "title": "Hero 01",
-      "description": "A hero section with a golden spiral background.",
-      "registryDependencies": [
-        "button",
-        "https://chanhdai.com/r/style.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/hero-01/hero-01.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/blocks/hero-01/components/hero-01-icons.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "meta": {
-        "previewClassName": "pt-8"
-      },
-      "categories": [
-        "marketing",
-        "hero"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "blog-01",
-      "title": "Blog 01",
-      "description": "A blog section with a grid layout.",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/blog-01/blog-01.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/blocks/blog-01/components/article-item.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "content",
-        "blog"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "blog-02",
-      "title": "Blog 02",
-      "description": "A blog section with a lined grid layout.",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button",
-        "https://chanhdai.com/r/style.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/blog-02/blog-02.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/blocks/blog-02/components/article-item.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "content",
-        "blog"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "testimonials-01",
-      "title": "Testimonials 01",
-      "description": "A testimonials section with dual marquees.",
-      "registryDependencies": [
-        "https://www.kibo-ui.com/r/marquee.json",
-        "https://chanhdai.com/r/testimonial-spotlight.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/testimonials-01/testimonials-01.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/blocks/testimonials-01/components/testimonial-list.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "meta": {
-        "previewClassName": "container mx-auto min-h-svh content-center-safe"
-      },
-      "categories": [
-        "marketing",
-        "testimonials"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "testimonials-02",
-      "title": "Testimonials 02",
-      "description": "A testimonials section with a lined layout.",
-      "registryDependencies": [
-        "https://www.kibo-ui.com/r/marquee.json",
-        "https://chanhdai.com/r/style.json",
-        "https://chanhdai.com/r/testimonial.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/testimonials-02/testimonials-02.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/blocks/testimonials-02/components/testimonial-list.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "marketing",
-        "testimonials"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "experience-01",
-      "title": "Experience 01",
-      "description": "A work experience section with a lined layout.",
-      "registryDependencies": [
-        "https://chanhdai.com/r/style.json",
-        "https://chanhdai.com/r/work-experience.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/experience-01/experience-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "content",
-        "portfolio"
-      ],
-      "type": "registry:block",
-      "author": "ncdai <dai@chanhdai.com>"
-    },
-    {
-      "name": "team-01",
-      "title": "Team 01",
-      "description": "A team section with glowing cards.",
-      "registryDependencies": [
-        "https://chanhdai.com/r/glow-card-grid.json"
-      ],
-      "files": [
-        {
-          "path": "src/registry/blocks/team-01/team-01.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "meta": {
-        "previewClassName": "min-h-svh place-items-center-safe content-center-safe"
-      },
-      "categories": [
-        "content",
-        "team"
-      ],
-      "type": "registry:block",
       "author": "ncdai <dai@chanhdai.com>"
     },
     {

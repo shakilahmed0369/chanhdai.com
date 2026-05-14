@@ -4,8 +4,6 @@ import path from "node:path"
 import { rimraf } from "rimraf"
 import { type Registry, registrySchema } from "shadcn/schema"
 
-import { getAllBlocks } from "@/lib/blocks"
-
 const REGISTRY_PATH = path.join(process.cwd(), "src/__registry__")
 const PUBLIC_REGISTRY_PATH = path.join(process.cwd(), "public/r")
 
@@ -111,21 +109,6 @@ export const Index: Record<string, any> = {`
   await fs.writeFile(path.join(REGISTRY_PATH, "index.tsx"), index, "utf8")
 }
 
-async function buildBlocksIndex() {
-  const blocks = await getAllBlocks(["registry:block"])
-
-  const payload = blocks.map((block) => ({
-    name: block.name,
-    description: block.description,
-    categories: block.categories,
-  }))
-
-  // Build /src/__registry__/__blocks__.json
-  await rimraf(path.join(REGISTRY_PATH, "__blocks__.json"))
-  const blocksJsonPath = path.join(REGISTRY_PATH, "__blocks__.json")
-  await fs.writeFile(blocksJsonPath, JSON.stringify(payload, null, 2))
-}
-
 try {
   console.log("💽 Building registry...")
 
@@ -139,8 +122,6 @@ try {
   }
 
   await buildRegistry(result.data)
-
-  await buildBlocksIndex()
 
   console.log("✅ Done!")
 } catch (error) {
