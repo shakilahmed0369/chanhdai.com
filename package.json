@@ -127,6 +127,12 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3"
   },
+  "browserslist": [
+    "chrome >= 90",
+    "firefox >= 90",
+    "safari >= 14",
+    "edge >= 90"
+  ],
   "engines": {
     "node": "22.x",
     "pnpm": ">=9"

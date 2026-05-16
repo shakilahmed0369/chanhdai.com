@@ -26,14 +26,20 @@ function ChanhDaiMarkMotion() {
     const coverMark = document.getElementById("js-cover-mark")
     if (!coverMark) return
 
-    distanceRef.current = calcDistance(coverMark)
+    let rafId = 0
+    const updateDistance = () => {
+      distanceRef.current = calcDistance(coverMark)
+    }
+
+    rafId = requestAnimationFrame(updateDistance)
 
     const resizeObserver = new ResizeObserver(() => {
-      distanceRef.current = calcDistance(coverMark)
+      rafId = requestAnimationFrame(updateDistance)
     })
     resizeObserver.observe(coverMark)
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId)
       resizeObserver.disconnect()
     }
   }, [])

@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useMotionValue, useSpring } from "motion/react"
+import { useRef } from "react"
 
 const VIEWBOX_WIDTH = 578
 const DEFAULT_GRADIENT_X = 289
@@ -13,16 +14,24 @@ export function SiteFooterInteractiveLogotype() {
     mass: 0.5,
   })
 
+  const pendingRaf = useRef<number>(0)
+
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const container = event.currentTarget
-    const containerRect = container.getBoundingClientRect()
-    const mouseX = event.clientX - containerRect.left
-    const containerWidth = containerRect.width
+    const clientX = event.clientX
+    if (pendingRaf.current) return
 
-    const normalizedX = (mouseX / containerWidth) * VIEWBOX_WIDTH
-    const clampedX = Math.max(0, Math.min(VIEWBOX_WIDTH, normalizedX))
+    pendingRaf.current = requestAnimationFrame(() => {
+      pendingRaf.current = 0
+      const containerRect = container.getBoundingClientRect()
+      const mouseX = clientX - containerRect.left
+      const containerWidth = containerRect.width
 
-    gradientX1Raw.set(clampedX)
+      const normalizedX = (mouseX / containerWidth) * VIEWBOX_WIDTH
+      const clampedX = Math.max(0, Math.min(VIEWBOX_WIDTH, normalizedX))
+
+      gradientX1Raw.set(clampedX)
+    })
   }
 
   const handleMouseLeave = () => {

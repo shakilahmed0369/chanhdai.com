@@ -22,7 +22,7 @@ function TechIcon({ tech }: { tech: (typeof TECH_STACK)[number] }) {
           alt={`${tech.title} light icon`}
           width={14}
           height={14}
-          unoptimized
+          unoptimized={!useCdn}
           onError={() => setUseCdn(true)}
         />
         <Image
@@ -35,7 +35,7 @@ function TechIcon({ tech }: { tech: (typeof TECH_STACK)[number] }) {
           alt={`${tech.title} dark icon`}
           width={14}
           height={14}
-          unoptimized
+          unoptimized={!useCdn}
           onError={() => setUseCdn(true)}
         />
       </>
@@ -52,7 +52,7 @@ function TechIcon({ tech }: { tech: (typeof TECH_STACK)[number] }) {
       alt={`${tech.title} icon`}
       width={14}
       height={14}
-      unoptimized
+      unoptimized={!useCdn}
       onError={() => setUseCdn(true)}
     />
   )

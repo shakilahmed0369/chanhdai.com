@@ -95,6 +95,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://assets.chanhdai.com" />
+        <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+        <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}

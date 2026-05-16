@@ -36,6 +36,8 @@ export const Magnet: React.FC<MagnetProps> = ({
   })
 
   const magnetRef = useRef<HTMLDivElement>(null)
+  const pendingRaf = useRef<number>(0)
+  const latestEvent = useRef<{ clientX: number; clientY: number } | null>(null)
 
   useEffect(() => {
     if (disabled) return
@@ -45,30 +47,44 @@ export const Magnet: React.FC<MagnetProps> = ({
       if (!magnetRef.current) return
       if (!(e instanceof MouseEvent)) return
 
-      const { left, top, width, height } =
-        magnetRef.current.getBoundingClientRect()
+      latestEvent.current = { clientX: e.clientX, clientY: e.clientY }
+      if (pendingRaf.current) return
 
-      const centerX = left + width / 2
-      const centerY = top + height / 2
+      pendingRaf.current = requestAnimationFrame(() => {
+        pendingRaf.current = 0
+        const coords = latestEvent.current
+        latestEvent.current = null
+        if (!coords || !magnetRef.current) return
 
-      const distX = Math.abs(centerX - e.clientX)
-      const distY = Math.abs(centerY - e.clientY)
+        const { left, top, width, height } =
+          magnetRef.current.getBoundingClientRect()
 
-      if (distX < width / 2 + padding && distY < height / 2 + padding) {
-        setIsActive(true)
-        const offsetX = (e.clientX - centerX) / magnetStrength
-        const offsetY = (e.clientY - centerY) / magnetStrength
-        setPosition({ x: offsetX, y: offsetY })
-      } else {
-        setIsActive(false)
-        setPosition({ x: 0, y: 0 })
-      }
+        const centerX = left + width / 2
+        const centerY = top + height / 2
+
+        const distX = Math.abs(centerX - coords.clientX)
+        const distY = Math.abs(centerY - coords.clientY)
+
+        if (distX < width / 2 + padding && distY < height / 2 + padding) {
+          setIsActive(true)
+          const offsetX = (coords.clientX - centerX) / magnetStrength
+          const offsetY = (coords.clientY - centerY) / magnetStrength
+          setPosition({ x: offsetX, y: offsetY })
+        } else {
+          setIsActive(false)
+          setPosition({ x: 0, y: 0 })
+        }
+      })
     }
 
     targetElement.addEventListener("mousemove", handleMouseMove)
 
     return () => {
       targetElement.removeEventListener("mousemove", handleMouseMove)
+      if (pendingRaf.current) {
+        cancelAnimationFrame(pendingRaf.current)
+        pendingRaf.current = 0
+      }
     }
   }, [padding, disabled, magnetStrength, containerRef])
 

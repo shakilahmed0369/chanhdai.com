@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+      },
     ],
     qualities: [75, 100],
   },
@@ -28,6 +33,28 @@ const nextConfig: NextConfig = {
           },
         }
       : undefined,
+  async headers() {
+    return [
+      {
+        source: "/tech-stack-icons/:file*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/favicon.png",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       {
