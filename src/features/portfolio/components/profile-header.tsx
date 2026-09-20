@@ -60,7 +60,7 @@ export function ProfileHeader() {
 
             {USER.resumeUrl && (
               <Button
-                className="relative mr-2 ml-auto after:absolute after:-inset-2 max-sm:w-8 max-sm:px-0"
+                className="gradient-border extend-touch-target relative mr-2 ml-auto animate-gradient-border [--gradient-border-duration:6s] [--gradient-border-via:color-mix(in_oklab,var(--color-info)_65%,var(--color-foreground))] [--gradient-border:conic-gradient(from_var(--gradient-border-angle),transparent,var(--gradient-border-via)_30deg,var(--gradient-border-via)_55deg,transparent_90deg)] motion-reduce:animate-none max-sm:w-8 max-sm:px-0"
                 variant="outline"
                 size="sm"
                 nativeButton={false}
