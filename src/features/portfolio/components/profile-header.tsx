@@ -1,5 +1,7 @@
+import { DownloadIcon } from "lucide-react"
 import Image from "next/image"
 
+import { Button } from "@/components/base/ui/button"
 import { USER } from "@/features/portfolio/data/user"
 import { TextFlip } from "@/registry/components/text-flip"
 
@@ -54,6 +56,25 @@ export function ProfileHeader() {
               <PronounceMyName
                 namePronunciationUrl={USER.namePronunciationUrl}
               />
+            )}
+
+            {USER.resumeUrl && (
+              <Button
+                className="relative mr-2 ml-auto after:absolute after:-inset-2 max-sm:w-8 max-sm:px-0"
+                variant="outline"
+                size="sm"
+                nativeButton={false}
+                render={
+                  <a
+                    href={USER.resumeUrl}
+                    download
+                    aria-label="Download resume"
+                  />
+                }
+              >
+                <DownloadIcon />
+                <span className="max-sm:hidden">Resume</span>
+              </Button>
             )}
           </div>
 

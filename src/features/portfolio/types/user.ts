@@ -36,6 +36,8 @@ export type User = {
   ogImage: string
   /** Audio URL for name pronunciation */
   namePronunciationUrl: string
+  /** Public URL to the resume file */
+  resumeUrl: string
   /** SEO keywords list for metadata */
   keywords: string[]
   /** Time zone in IANA format (e.g., "Asia/Ho_Chi_Minh") */

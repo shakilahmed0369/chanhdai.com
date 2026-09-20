@@ -34,6 +34,7 @@ export const USER: User = {
   avatar: "https://avatars.githubusercontent.com/u/51516043?v=4",
   ogImage: "/og-image.png",
   namePronunciationUrl: "",
+  resumeUrl: "/resume/shakilahmed-resume.pdf",
   timeZone: "Asia/Dhaka",
   keywords: [
     "shakilahmed",
