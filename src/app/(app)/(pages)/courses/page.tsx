@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import {
   PageHeading,
+  PageHeadingDescription,
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
@@ -46,6 +47,11 @@ export default function CoursesPage() {
         <PageHeadingTitle>
           Courses and workshops I have taught.
         </PageHeadingTitle>
+        <PageHeadingDescription className="text-foreground">
+          I love to teach. Over the years, I’ve taught around{" "}
+          <span className="text-shimmer">43,000</span> students worldwide
+          through my video courses and live workshops.
+        </PageHeadingDescription>
       </PageHeading>
 
       <div className="h-4" />
