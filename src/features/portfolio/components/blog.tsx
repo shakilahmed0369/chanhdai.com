@@ -1,9 +1,9 @@
 import { format } from "date-fns"
 import { ArrowRightIcon } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
 import { Button } from "@/components/base/ui/button"
+import { Image } from "@/components/ui/image"
 import { getAllDocs } from "@/features/doc/data/documents"
 
 import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"

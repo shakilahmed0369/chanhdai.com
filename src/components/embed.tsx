@@ -1,3 +1,4 @@
+import { Img } from "@/components/ui/image"
 import { cn } from "@/lib/utils"
 
 import { ImageZoom } from "./kibo-ui/image-zoom"
@@ -47,8 +48,7 @@ export function FramedImage({
 }: React.ComponentProps<"img"> & {
   canZoom?: boolean
 }) {
-  // eslint-disable-next-line jsx-a11y/alt-text
-  const image = <img {...props} />
+  const image = <Img {...props} />
 
   return (
     <figure className="relative [&_img]:rounded-xl">

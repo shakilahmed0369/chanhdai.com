@@ -1,7 +1,7 @@
 import { format } from "date-fns"
-import Image from "next/image"
 import Link from "next/link"
 
+import { Image } from "@/components/ui/image"
 import type { Doc } from "@/features/doc/types/document"
 import { cn } from "@/lib/utils"
 

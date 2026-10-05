@@ -1,7 +1,7 @@
 import { DownloadIcon } from "lucide-react"
-import Image from "next/image"
 
 import { Button } from "@/components/base/ui/button"
+import { Image } from "@/components/ui/image"
 import { USER } from "@/features/portfolio/data/user"
 import { TextFlip } from "@/registry/components/text-flip"
 

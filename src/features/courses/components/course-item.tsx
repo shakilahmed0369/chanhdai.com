@@ -1,6 +1,6 @@
 import type { ImageProps } from "next/image"
-import Image from "next/image"
 
+import { Image } from "@/components/ui/image"
 import type { Course } from "@/features/courses/types/courses"
 import { cn } from "@/lib/utils"
 

@@ -1,8 +1,8 @@
 import { InfinityIcon } from "lucide-react"
 import type { ImageProps } from "next/image"
-import Image from "next/image"
 import Link from "next/link"
 
+import { Image } from "@/components/ui/image"
 import type { ProjectDoc } from "@/features/projects/types/projects"
 import { cn } from "@/lib/utils"
 
