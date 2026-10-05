@@ -7,6 +7,8 @@ import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { Magnet } from "@/components/react-bits/magnet"
 import { cn } from "@/lib/utils"
 
+import { ProfileCoverNeko } from "./profile-cover-neko"
+
 export function ProfileCover() {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -21,6 +23,8 @@ export function ProfileCover() {
           "bg-black/0.75 bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center [--pattern-foreground:var(--color-zinc-950)]/5 dark:bg-white/0.75 dark:[--pattern-foreground:var(--color-white)]/5"
         )}
       >
+        <ProfileCoverNeko containerRef={containerRef} />
+
         <div className="relative z-10">
           <Magnet containerRef={containerRef} magnetStrength={6}>
             <ChanhDaiMark id="js-cover-mark" className="h-14 w-auto sm:h-16" />
