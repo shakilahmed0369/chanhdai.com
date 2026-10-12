@@ -4,20 +4,30 @@ import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
-import type { WebSite, WithContext } from "schema-dts"
+import type { Person, WebSite, WithContext } from "schema-dts"
 
 import { Providers } from "@/components/providers"
 import { META_THEME_COLORS, SITE_INFO, X_HANDLE } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
 import { fontVariables } from "@/lib/fonts"
+import { getPersonSchema } from "@/lib/seo"
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_INFO.name,
+    alternateName: ["shakilahmed", "shakil ahmed developer"],
     url: SITE_INFO.url,
-    alternateName: [USER.username],
+    description: SITE_INFO.description,
+    inLanguage: "en",
+  }
+}
+
+function getPersonJsonLd(): WithContext<Person> {
+  return {
+    "@context": "https://schema.org",
+    ...getPersonSchema(),
   }
 }
 
@@ -40,17 +50,31 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
   title: {
     template: `%s – ${SITE_INFO.name}`,
-    default: `${USER.displayName} – ${USER.jobTitle}`,
+    default: `${USER.displayName} – ${USER.jobTitle} & Web Developer`,
   },
   description: SITE_INFO.description,
   keywords: SITE_INFO.keywords,
+  applicationName: SITE_INFO.name,
+  category: "technology",
   authors: [
     {
-      name: "ncdai",
+      name: USER.displayName,
       url: SITE_INFO.url,
     },
   ],
-  creator: "ncdai",
+  creator: USER.displayName,
+  publisher: USER.displayName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     siteName: SITE_INFO.name,
     url: "/",
@@ -77,6 +101,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
 }
 
@@ -99,6 +124,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://avatars.githubusercontent.com" />
         <link rel="preconnect" href="https://static.cloudflareinsights.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${SITE_INFO.name} – Blog`}
+          href={`${SITE_INFO.url}/blog/rss`}
+        />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
@@ -112,6 +143,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getPersonJsonLd()).replace(/</g, "\\u003c"),
           }}
         />
       </head>

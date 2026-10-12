@@ -20,6 +20,7 @@ import { SocialLinks } from "@/features/portfolio/components/social-links"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
 // import { Testimonials } from "@/features/portfolio/components/testimonials"
 import { USER } from "@/features/portfolio/data/user"
+import { getPersonSchema } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
@@ -111,12 +112,7 @@ function getPageJsonLd(): WithContext<PageSchema> {
     "@type": "ProfilePage",
     dateCreated: new Date(USER.dateCreated).toISOString(),
     dateModified: new Date().toISOString(),
-    mainEntity: {
-      "@type": "Person",
-      name: USER.displayName,
-      identifier: USER.username,
-      image: USER.avatar,
-    },
+    mainEntity: getPersonSchema(),
   }
 }
 

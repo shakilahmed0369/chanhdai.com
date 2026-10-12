@@ -34,7 +34,7 @@ import {
   getDocBySlug,
 } from "@/features/doc/data/documents"
 import type { Doc } from "@/features/doc/types/document"
-import { USER } from "@/features/portfolio/data/user"
+import { getPersonSchema, toAbsoluteUrl } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 
 export const revalidate = false
@@ -58,12 +58,10 @@ export async function generateMetadata({
     return notFound()
   }
 
-  const { title, description, image, createdAt, updatedAt } = doc.metadata
+  const { title, description, createdAt, updatedAt } = doc.metadata
 
   const postUrl = getDocUrl(doc)
-  const ogImage =
-    image ||
-    `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
+  const ogImage = getOgImage(doc)
 
   return {
     title,
@@ -92,24 +90,30 @@ export async function generateMetadata({
   }
 }
 
+function getOgImage(doc: Doc) {
+  return (
+    doc.metadata.image ||
+    `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`
+  )
+}
+
 function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: doc.metadata.title,
     description: doc.metadata.description,
-    image:
-      doc.metadata.image ||
-      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`,
+    image: toAbsoluteUrl(getOgImage(doc)),
     url: `${SITE_INFO.url}${getDocUrl(doc)}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_INFO.url}${getDocUrl(doc)}`,
+    },
     datePublished: new Date(doc.metadata.createdAt).toISOString(),
     dateModified: new Date(doc.metadata.updatedAt).toISOString(),
-    author: {
-      "@type": "Person",
-      name: USER.displayName,
-      identifier: USER.username,
-      image: USER.avatar,
-    },
+    inLanguage: "en",
+    author: getPersonSchema(),
+    publisher: getPersonSchema(),
   }
 }
 

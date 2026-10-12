@@ -4,7 +4,7 @@ export const registryConfig = {
    * @example "@ncdai" - Users can install components with: `npx shadcn add @ncdai/wheel-picker`
    * @see https://ui.shadcn.com/docs/registry/namespace#overview
    */
-  namespace: process.env.NEXT_PUBLIC_REGISTRY_NAMESPACE || "@ncdai",
+  namespace: process.env.NEXT_PUBLIC_REGISTRY_NAMESPACE || "@shakilahmed",
   /**
    * URL pattern for resolving namespaced components
    * The {name} placeholder will be replaced with the component name
@@ -14,7 +14,7 @@ export const registryConfig = {
    */
   namespaceUrl:
     process.env.NEXT_PUBLIC_REGISTRY_NAMESPACE_URL ||
-    "https://chanhdai.com/r/{name}.json",
+    "https://shakilahmed.dev/r/{name}.json",
 }
 
 export const registryCategories = [
