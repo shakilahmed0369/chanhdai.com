@@ -3,7 +3,12 @@ import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["ncdai.localhost", "ncdai.local"],
+  allowedDevOrigins: [
+    "ncdai.localhost",
+    "ncdai.local",
+    "localhost",
+    "127.0.0.1",
+  ],
   devIndicators: false,
   images: {
     remotePatterns: [
@@ -23,7 +28,7 @@ const nextConfig: NextConfig = {
         port: "",
       },
     ],
-    qualities: [75, 100],
+    qualities: [75, 80, 100],
   },
   compiler:
     process.env.NODE_ENV === "production"
