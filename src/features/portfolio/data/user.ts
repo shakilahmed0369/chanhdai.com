@@ -31,7 +31,7 @@ export const USER: User = {
   - Strong focus on backend development, with hands-on experience integrating dynamic frontend interfaces.
   - Experienced across the full SDLC, working with legacy systems, and delivering reliable, production-ready solutions.
   `,
-  avatar: "https://avatars.githubusercontent.com/u/51516043?v=4",
+  avatar: "/avatar.webp",
   ogImage: "/og-image.png",
   namePronunciationUrl: "",
   resumeUrl: "/resume/shakilahmed-resume.pdf",

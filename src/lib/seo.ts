@@ -15,7 +15,7 @@ export function getPersonSchema(): PersonSchema {
     name: USER.displayName,
     alternateName: ["shakilahmed", "shakil ahmed developer"],
     url: SITE_INFO.url,
-    image: USER.avatar,
+    image: toAbsoluteUrl(USER.avatar),
     jobTitle: USER.jobTitle,
     address: {
       "@type": "PostalAddress",

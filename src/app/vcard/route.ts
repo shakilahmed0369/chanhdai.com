@@ -1,3 +1,6 @@
+import fs from "node:fs/promises"
+import path from "node:path"
+
 import { NextResponse } from "next/server"
 import sharp from "sharp"
 import VCard from "vcard-creator"
@@ -40,19 +43,30 @@ export async function GET() {
 
 async function getVCardPhoto(url: string) {
   try {
-    const res = await fetch(url)
+    let buffer: Buffer
 
-    if (!res.ok) {
-      return null
+    if (url.startsWith("/")) {
+      const filePath = path.join(process.cwd(), "public", url.slice(1))
+      buffer = await fs.readFile(filePath)
+    } else {
+      const res = await fetch(url)
+
+      if (!res.ok) {
+        return null
+      }
+
+      buffer = Buffer.from(await res.arrayBuffer())
+      if (buffer.length === 0) {
+        return null
+      }
+
+      const contentType = res.headers.get("Content-Type") || ""
+      if (!contentType.startsWith("image/")) {
+        return null
+      }
     }
 
-    const buffer = Buffer.from(await res.arrayBuffer())
     if (buffer.length === 0) {
-      return null
-    }
-
-    const contentType = res.headers.get("Content-Type") || ""
-    if (!contentType.startsWith("image/")) {
       return null
     }
 
